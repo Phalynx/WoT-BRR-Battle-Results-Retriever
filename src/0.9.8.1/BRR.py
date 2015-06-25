@@ -22,7 +22,7 @@ from gui import ClientHangarSpace
 from PlayerEvents import g_playerEvents
 
 BATTLE_RESULTS_VERSION = 1
-logging = false
+logging = True
 CACHE_DIR = os.path.join(os.path.dirname(unicode(BigWorld.wg_getPreferencesFilePath(), 'utf-8', errors='ignore')), 'battle_results')
 todolist = []
 
@@ -32,7 +32,7 @@ def fetchresult(arenaUniqueID):
     if arenaUniqueID:
         battleResults = load(BigWorld.player().name, arenaUniqueID)
         if battleResults is not None and logging:
-            LOG_NOTE('Record found:', battleResults)
+            LOG_NOTE('Record found')
 			
         proxy = partial(__onGetResponse, None)
         BigWorld.player()._doCmdInt3(AccountCommands.CMD_REQ_BATTLE_RESULTS, arenaUniqueID, 0, 0, proxy)
@@ -62,7 +62,7 @@ def __onStreamComplete(callback, isSuccess, data):
     try:
         battleResults = cPickle.loads(zlib.decompress(data))
         if logging:
-            LOG_NOTE ('Stream complete:', isSuccess, battleResults)
+            LOG_NOTE ('Stream complete:', isSuccess)
         save(BigWorld.player().name, battleResults)
     except:
         LOG_CURRENT_EXCEPTION()
@@ -134,7 +134,7 @@ def save_existing(directory):
 		
 def save(accountName, battleResults):
     if logging:
-        LOG_NOTE ('Saving: ', accountName, battleResults)
+        LOG_NOTE('Saving: ', accountName)
     fileHandler = None
     try:
         arenaUniqueID = battleResults[0]
