@@ -3,6 +3,7 @@
 Version 0.9.8.1
 
 * Author: Marius Czyz aka Phalynx
+* Contributors: locastan, Scrambled
 * Contact: marius.czyz@gmail.com
 * Website: http://www.vbaddict.net
 * Wiki: http://wiki.vbaddict.net
